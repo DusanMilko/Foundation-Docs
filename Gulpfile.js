@@ -30,17 +30,23 @@ assemble.helpers('src/helpers/**/*.js');
 assemble.partials('src/views/partials/**/*.hbs');
 assemble.layouts('src/views/layouts/**/*.hbs');
 
-gulp.task('assemble', function() {
+assemble.task('docs', function() {
   assemble.src('src/views/docs/**/*.hbs')
     .pipe(rename(function (path) {
       path.extname = ".html"
     }))
     .pipe(assemble.dest('build/docs/'));
+});   
+assemble.task('pages', function() {
   assemble.src('src/views/pages/**/*.hbs')
     .pipe(rename(function (path) {
       path.extname = ".html"
     }))
     .pipe(assemble.dest('build/'));
+});
+gulp.task('assemble', function() {
+  assemble.run('docs');
+  assemble.run('pages');
 });
 
 // ----------------------------------------------------------------
@@ -62,6 +68,10 @@ gulp.task('css', function() {
       }
     }))
     .pipe(sass())
+    .on('error', function (err) {
+      gutil.log(gutil.colors.red('ERROR: ')+gutil.colors.yellow(err.message));
+      this.emit('end');
+    })
     .pipe(autoprefixer('last 5 versions'))
     //.pipe(minifycss())
     .pipe(gulp.dest('build/assets/css'))
@@ -73,6 +83,10 @@ gulp.task('js', function() {
     .pipe(gulp.dest('build/assets/js/libs'))
   gulp.src('src/assets/js/main.js')
     .pipe(browserify({ debug : true }))
+    .on('error', function (err) {
+      gutil.log(gutil.colors.red('ERROR: ')+gutil.colors.yellow(err.message));
+      this.emit('end');
+    })
     .pipe(gulp.dest('build/assets/js'))
     .pipe(notify({ message : 'Gulp JS Complete'}));
 });
@@ -125,7 +139,7 @@ gulp.task('build', ['clean'], function() {
 // ----------------------------------------------------------------
 
 gulp.task('watch', function() {
-  gulp.watch('src/views/**/*.hbs', ['assemble']);
+  gulp.watch('src/views/**/*.hbs', ['pages']);
   gulp.watch('src/assets/scss/**/*.scss', ['css']);
   gulp.watch('src/assets/js/**/*.js', ['js']);
 });
