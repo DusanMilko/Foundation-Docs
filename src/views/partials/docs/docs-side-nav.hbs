@@ -1,0 +1,10 @@
+<div class="docs-side-nav show-for-large-up">
+  <i class="fi-thumbnails"></i>
+  <ul class="xsmall-24">
+    {{#each side_nav}}
+    <li>
+      <a href="#{{hyphenate (lowercase this) }}" class="js-scroll-to">{{this}}</a>
+    </li>
+    {{/each}}
+  </ul>
+</div>

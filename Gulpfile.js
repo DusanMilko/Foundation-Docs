@@ -139,7 +139,7 @@ gulp.task('build', ['clean'], function() {
 // ----------------------------------------------------------------
 
 gulp.task('watch', function() {
-  gulp.watch('src/views/**/*.hbs', ['pages']);
+  gulp.watch('src/views/**/*.hbs', ['assemble']);
   gulp.watch('src/assets/scss/**/*.scss', ['css']);
   gulp.watch('src/assets/js/**/*.js', ['js']);
 });

@@ -7,6 +7,56 @@ p {
   font-size: 14px;
 }
 
+code,
+kbd,
+pre,
+samp {
+  font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+code {
+  padding: 2px 4px;
+  font-size: 90%;
+  color: #c7254e;
+  background-color: #f5f5f5;
+  white-space: nowrap;
+  border-radius: 5px;
+}
+
+kbd {
+  padding: 2px 4px;
+  font-size: 90%;
+  color: white;
+  background-color: #333333;
+  border-radius: 3px;
+  box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+
+pre {
+  display: block;
+  padding: 9.5px 0;
+  margin: 30px 0 0;
+  font-size: 13px;
+  line-height: 1.42857;
+  word-break: break-all;
+  word-wrap: normal;
+  overflow:auto;
+  white-space:pre;
+  color: #222;
+  background-color: #f5f5f5;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+
+  code {
+    padding: 0;
+    font-size: inherit;
+    color: inherit;
+    white-space: pre;
+    background-color: transparent;
+    border-radius: 0;
+  }
+}
+
 // Docs title
 
 .docs-title {
@@ -43,7 +93,11 @@ p {
   z-index: 9;
   box-shadow: inset 10px 0 3px -10px $steel;
   transform: translateX(185px);
-  transition: all 0.3s linear;
+  transition: all 0.25s ease;
+
+  @media only screen and (min-width: 1850px) {
+    transform: translateX(0px);
+  }
 
   &:hover {
     transform: translateX(0px);
@@ -140,6 +194,7 @@ p {
   float: left;
   overflow: hidden;
   min-height: 200px;
+  width: 100%;
 }
 
 .docs__item-desc {
@@ -147,9 +202,19 @@ p {
   padding-top: 45px;
   padding-bottom: 45px;
 
+  @media #{$small-up}{
+    padding-left: 30px;
+    padding-right: 30px;
+  }
   @media #{$xlarge-up}{
     padding-bottom: 600px;
     margin-bottom: -600px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  @media #{$xxlarge-up}{
+    padding-left: 40px;
+    padding-right: 40px;
   }
 
   h2 {
@@ -162,6 +227,8 @@ p {
   padding-top: 62px;
   padding-bottom: 45px;
   max-width: 1000px;
+  //TODO: look into last column element floating right
+  float: left!important;
 
   h2 {
     color: $base;
