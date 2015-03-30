@@ -2,10 +2,23 @@
 layout: docs
 title: Styles
 side_nav:
+  - Grid
   - Color
+  - Typography
   - Buttons
   - Title
 ---
+
+<div id="grid" class="docs__item">
+  {{#parseJSON '{
+    "title": "Grid",
+    "desc": "desc"
+  }'}}
+  {{> docs-desc }}
+  {{/parseJSON}}
+  <div class="docs__item-view xsmall-24 xlarge-16 column">
+  </div>
+</div><!--end section-->
 
 <div id="color" class="docs__item">
 
@@ -59,6 +72,17 @@ side_nav:
 
 </div><!--end section-->
 
+<div id="typography" class="docs__item">
+  {{#parseJSON '{
+    "title": "Typography",
+    "desc": "desc"
+  }'}}
+  {{> docs-desc }}
+  {{/parseJSON}}
+  <div class="docs__item-view xsmall-24 xlarge-16 column">
+  </div>
+</div><!--end section-->
+
 <div id="buttons" class="docs__item">
 
   {{#parseJSON '{
@@ -69,21 +93,21 @@ side_nav:
   {{/parseJSON}}
 
   <div class="docs__item-view xsmall-24 xlarge-16 column">
-    <div class="row">
+    <p>
       <a class="button button--xsmall" href="#!">xsmall</a>
       <a class="button button--small" href="#!">small</a>
       <a class="button" href="#!">button</a>
       <a class="button button--large" href="#!">large</a>
-    </div>
-    <div class="row">
+    </p>
+    <p>
       <a class="button is-smooth" href="#!">is-smooth</a>
       <a class="button is-round" href="#!">is-round</a>
-    </div>
-    <div class="row">
+    </p>
+    <p>
       <a class="button button--filled" href="#!">filled</a>
       <a class="button button--color" href="#!">color</a>
       <a class="button button--color button--filled" href="#!">color + filled</a>
-    </div>
+    </p>
 
     {{#markdown}}
 
@@ -91,6 +115,23 @@ side_nav:
     <a class="button button--small" href="#!">small</a>
     <a class="button" href="#!">button</a>
     <a class="button button--large" href="#!">large</a>
+
+    {{/markdown}}
+  </div>
+
+  {{#parseJSON '{
+    "title": "Button Group",
+    "desc": "These are the button groups beings used."
+  }'}}
+  {{> docs-desc }}
+  {{/parseJSON}}
+
+  <div class="docs__item-view xsmall-24 xlarge-16 column">
+
+
+    {{#markdown}}
+
+
 
     {{/markdown}}
   </div>
