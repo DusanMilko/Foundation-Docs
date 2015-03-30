@@ -1,0 +1,188 @@
+body {
+  font-family: $Roboto;
+  font-size: 14px;
+}
+
+p {
+  font-size: 14px;
+}
+
+// Docs title
+
+.docs-title {
+  padding: 8rem 15%;
+  background: $crimson;
+  margin-top: 45px;
+
+  h1 {
+    margin: 0;
+    color: $white;
+  }
+  h2 {
+    font-weight: 200;
+    margin: 0;
+    color: $white;
+  }
+
+  h5 {
+    color: $white;
+  }
+}
+
+// Side nav
+
+.docs-side-nav {
+  padding: 57px 0px 15px;
+  position: fixed;
+  top: 0px;
+  height: 100%;
+  right: 0;
+  width: 220px;
+  background: $smoke;
+  overflow: auto;
+  z-index: 9;
+  box-shadow: inset 10px 0 3px -10px $steel;
+  transform: translateX(185px);
+  transition: all 0.3s linear;
+
+  &:hover {
+    transform: translateX(0px);
+  }
+
+  .fi-thumbnails {
+    display: block;
+    width: 100%;
+    padding: 0 15px 8px;
+    border-bottom: 1px solid $gainsboro;
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0 0 0 35px;
+
+    li {
+      margin: 0;
+      width: 100%;
+
+      a {
+        text-decoration: none;
+        color: $jet;
+        display: inline-block;
+        padding: 8px 10px;
+        width: 100%;
+        border-bottom: 1px solid $gainsboro;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
+
+// Page
+
+.docs-page {
+  width: 100%;
+
+  @media #{$large-up}{
+    padding-right: 35px;
+  }
+}
+
+// Docs nav
+
+.docs-nav {
+  margin: 0;
+  list-style: none;
+  display: inline-block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: $white;
+  width: 100%;
+  box-shadow: 0 0 2px $charcoal;
+  padding: 0;
+  z-index: 10;
+
+  li {
+    margin: 0;
+    padding: 0;
+    float: left;
+    border-left: 1px solid $iron;
+
+    &:first-child {
+      border-left: 0px;
+    }
+
+    &:last-child {
+      border-right: 1px solid $iron;
+    }
+
+    a {
+      text-decoration: none;
+      padding: 12px 20px;
+      display: inline-block;
+      color: $jet;
+
+      &:hover {
+        background: $smoke;
+      }
+    }
+  }
+}
+
+// Docs item
+
+.docs__item {
+  border-top: 1px solid $gainsboro;
+  float: left;
+  overflow: hidden;
+  min-height: 200px;
+}
+
+.docs__item-desc {
+  background: $vapor;
+  padding-top: 45px;
+  padding-bottom: 45px;
+
+  @media #{$xlarge-up}{
+    padding-bottom: 600px;
+    margin-bottom: -600px;
+  }
+
+  h2 {
+    color: $crimson;
+    font-weight: 400;
+  }
+}
+
+.docs__item-view {
+  padding-top: 62px;
+  padding-bottom: 45px;
+  max-width: 1000px;
+
+  h2 {
+    color: $base;
+    font-weight: 400;
+    margin-top: 0px;
+  }
+}
+
+
+// Colors
+
+.color-swatch {
+  padding-bottom: 90%;
+  margin: 0px;
+  box-shadow: 0px 0px 4px rgba(0,0,0,0.1);
+
+  &:hover {
+    box-shadow: 0px 0px 4px rgba(0,0,0,0.4);
+  }
+}
+.color-swatch-desc {
+  text-align: center;
+  padding: 5px 0 20px;
+}
