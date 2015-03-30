@@ -1,8 +1,5 @@
 @import 'libs/normalize';
 
-//Variables
-@import 'variables';
-
 //Mixins
 @import 'mixins';
 
@@ -13,6 +10,9 @@
 //Foundation
 @import 'libs/foundation/settings';
 @import 'libs/foundation';
+
+//Variables
+@import 'variables';
 
 //Docs
 @import 'docs';

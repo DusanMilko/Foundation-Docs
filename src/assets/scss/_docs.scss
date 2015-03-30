@@ -64,17 +64,17 @@ pre {
   background: $crimson;
   margin-top: 45px;
 
-  h1 {
+  h3 {
     margin: 0;
     color: $white;
   }
-  h2 {
+  h4 {
     font-weight: 200;
     margin: 0;
     color: $white;
   }
 
-  h5 {
+  h6 {
     color: $white;
   }
 }
@@ -199,6 +199,7 @@ pre {
   overflow: hidden;
   min-height: 200px;
   width: 100%;
+  clear: both;
 
   &:first-child {
     border-top: 0px;
@@ -233,21 +234,22 @@ pre {
     padding-right: 40px;
   }
 
-  h2 {
+  h4 {
     color: $crimson;
     font-weight: 400;
+    margin-top: 0;
   }
 }
 
 .docs__item-view {
-  padding-top: 62px;
+  padding-top: 45px;
   padding-bottom: 45px;
   max-width: 1000px;
   //TODO: look into last column element floating right
   float: left!important;
   border-top: 5px solid $white;
 
-  h2 {
+  h4.docs-heading {
     color: $base;
     font-weight: 400;
     margin-top: 0px;
