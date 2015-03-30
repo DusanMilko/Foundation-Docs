@@ -26,6 +26,7 @@ gulp.task('clean', function(cb) {
 // ----------------------------------------------------------------
 
 assemble.data(['src/data/**/*.{json,yml}']);
+assemble.helpers('src/helpers/**/*.js');
 assemble.partials('src/views/partials/**/*.hbs');
 assemble.layouts('src/views/layouts/**/*.hbs');
 
