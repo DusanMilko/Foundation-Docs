@@ -4,6 +4,9 @@ title: Docs
 side_nav:
   - Objective
   - Methodology
+  - Tools
+  - Structure
+  - Setup
 ---
 
 <div id="objective" class="docs__item">
@@ -44,7 +47,57 @@ side_nav:
         <li>
           Components - These are functional pieces of the project
         </li>
+        <li>
+          Forms - Form Elements
+        </li>
       </ul> 
+    </p>
+  </div>
+</div><!--end section-->
+
+<div id="tools" class="docs__item">
+  {{#parseJSON '{
+    "title": "Tools",
+    "desc": ""
+  }'}}
+  {{> docs-desc }}
+  {{/parseJSON}}
+  <div class="docs__item-view xsmall-24 xlarge-16 column">
+    <p>
+      The tools used are...
+    </p>
+  </div>
+</div><!--end section-->
+
+<div id="structure" class="docs__item">
+  {{#parseJSON '{
+    "title": "Structure",
+    "desc": ""
+  }'}}
+  {{> docs-desc }}
+  {{/parseJSON}}
+  <div class="docs__item-view xsmall-24 xlarge-16 column">
+    <p>
+      The structure...
+    </p>
+
+    {{#markdown}}
+      ---build
+      ---src
+    {{/markdown}}
+  </div>
+</div><!--end section-->
+
+<div id="setup" class="docs__item">
+  {{#parseJSON '{
+    "title": "Setup",
+    "desc": ""
+  }'}}
+  {{> docs-desc }}
+  {{/parseJSON}}
+  <div class="docs__item-view xsmall-24 xlarge-16 column">
+    <p>
+      To setup...
     </p>
   </div>
 </div><!--end section-->

@@ -12,6 +12,9 @@ var del = require('del');
 var cssGlobbing = require('gulp-css-globbing');
 var todo = require('gulp-todo');
 var assemble = require('assemble');
+var iconfont = require('gulp-iconfont');
+var consolidate = require('gulp-consolidate');
+var lodash = require('lodash');
 
 var paths = {
   images: 'src/assets/imgs/**/*'
@@ -25,6 +28,7 @@ gulp.task('clean', function(cb) {
 
 // ----------------------------------------------------------------
 
+// Generate pages and docs
 assemble.data(['src/data/**/*.{json,yml}']);
 assemble.helpers('src/helpers/**/*.js');
 assemble.partials('src/views/partials/**/*.hbs');
@@ -51,6 +55,29 @@ gulp.task('assemble', function() {
 
 // ----------------------------------------------------------------
 
+// Generate Icon font form svgs 
+gulp.task('iconfont', function(){
+  gulp.src(['src/assets/icons/svgs/*.svg'])
+    .pipe(iconfont({ fontName: 'custom-icon-font' }))
+    .on('codepoints', function(codepoints, options) {
+      gulp.src('src/assets/icons/_icon-font.css')
+        .pipe(consolidate('lodash', {
+          glyphs: codepoints,
+          fontName: 'custom-icon-font',
+          fontPath: '../fonts/icons/',
+          className: 'i'
+        }))
+        .pipe(rename(function (path) {
+          path.extname = ".scss"
+        }))
+        .pipe(gulp.dest('src/assets/scss'));
+    })
+    .pipe(gulp.dest('src/assets/fonts/icons'));
+});
+
+// ----------------------------------------------------------------
+
+// Generate css from scss
 gulp.task('css', function() {
   gulp.src('src/assets/scss/main.scss')
     .pipe(cssGlobbing({
@@ -78,6 +105,9 @@ gulp.task('css', function() {
     .pipe(notify({ message : 'Gulp CSS Complete'}));
 });
 
+// ----------------------------------------------------------------
+
+// Generate JS with browserify with sourcemaps
 gulp.task('js', function() {
   gulp.src('src/assets/js/libs/**/*')
     .pipe(gulp.dest('build/assets/js/libs'))
@@ -91,6 +121,7 @@ gulp.task('js', function() {
     .pipe(notify({ message : 'Gulp JS Complete'}));
 });
 
+// Compress js
 gulp.task('compressjs', function() {
   gulp.src('build/assets/js/main.js')
     .pipe(uglify())
@@ -99,6 +130,8 @@ gulp.task('compressjs', function() {
     .pipe(notify({ message : 'Gulp Compress JS Complete'}));
 });
 
+// ----------------------------------------------------------------
+
 // Copy all static images
 gulp.task('images', function() {
   return gulp.src(paths.images)
@@ -106,6 +139,7 @@ gulp.task('images', function() {
     .pipe(gulp.dest('build/assets/imgs'));
 });
 
+// Copy all fonts
 gulp.task('fonts', function() {
   return gulp.src('src/assets/fonts/**/*')
     .pipe(gulp.dest('build/assets/fonts'));

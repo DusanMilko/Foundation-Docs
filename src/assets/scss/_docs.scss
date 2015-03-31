@@ -60,9 +60,13 @@ pre {
 // Docs title
 
 .docs-title {
-  padding: 8rem 15%;
-  background: $crimson;
+  padding: 4rem 15%;
+  background: $docs-color;
   margin-top: 45px;
+
+  @media #{$medium-up}{
+    padding: 8rem 15%;
+  }
 
   h3 {
     margin: 0;
@@ -74,8 +78,9 @@ pre {
     color: $white;
   }
 
-  h6 {
+  p {
     color: $white;
+    margin-top: 30px;
   }
 }
 
@@ -147,10 +152,23 @@ pre {
 
 // Docs nav
 
+.hamburger {
+  text-decoration: none;
+  padding: 10px;
+  padding: 8px 15px;
+  float: left;
+  border-right: 1px solid $iron;
+  height: 45px;
+
+  .fi-list {
+    color: $oil;
+    font-size: 20px;
+  }
+}
+
 .docs-nav {
-  margin: 0;
-  list-style: none;
-  display: inline-block;
+  height: 45px;
+  display: block;
   position: fixed;
   top: 0;
   left: 0;
@@ -160,32 +178,88 @@ pre {
   padding: 0;
   z-index: 10;
 
-  li {
-    margin: 0;
-    padding: 0;
-    float: left;
-    border-left: 1px solid $iron;
+  .docs-nav-main {
+    display: none;
 
-    &:first-child {
-      border-left: 0px;
-    }
-
-    &:last-child {
-      border-right: 1px solid $iron;
-    }
-
-    a {
-      text-decoration: none;
-      padding: 12px 20px;
+    &.is-active {
       display: inline-block;
-      color: $jet;
+      clear: both;
+      border-top: 1px solid $iron;
+      box-shadow: 0 2px 3px $iron;
+    }
 
-      &:hover {
-        background: $smoke;
-      }
+    @media #{$large-up}{
+      display: block;
 
       &.is-active {
-        color: $crimson;
+        display: block;
+        clear: none;
+        border-top: 0px solid $iron;
+        box-shadow: 0px $iron;
+      }
+    }
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: inline-block;
+
+    background: $white;
+    @media #{$large-up}{
+      background: none;
+    }
+
+    li {
+      margin: 0;
+      padding: 0;
+      float: left;
+      border-top: 1px solid $iron;
+      width: 100%;
+
+      &:first-child {
+        border-top: 0px;
+      }
+
+      &:last-child {
+        border-bottom: 1px solid $iron;
+      }
+
+      a {
+        text-decoration: none;
+        padding: 12px 20px;
+        display: inline-block;
+        color: $jet;
+        height: 45px;
+        width: 100%;
+
+        &:hover {
+          background: $smoke;
+        }
+
+        &.is-active {
+          color: $docs-color;
+          font-weight: 600;
+        }
+      }
+
+      @media #{$large-up}{
+        border-top: 0px solid $iron;
+        border-left: 1px solid $iron;
+        width: auto;
+
+        &:first-child {
+          border-left: 0px;
+        }
+        &:last-child {
+          border-bottom: 0px solid $iron;
+          border-right: 1px solid $iron;
+        }
+
+        a {
+          width: auto;
+        }
       }
     }
   }
@@ -235,7 +309,7 @@ pre {
   }
 
   h4 {
-    color: $crimson;
+    color: $docs-color;
     font-weight: 400;
     margin-top: 0;
   }
