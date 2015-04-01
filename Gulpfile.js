@@ -15,6 +15,7 @@ var assemble = require('assemble');
 var iconfont = require('gulp-iconfont');
 var consolidate = require('gulp-consolidate');
 var lodash = require('lodash');
+var changed = require('gulp-changed');
 
 var paths = {
   images: 'src/assets/imgs/**/*'
@@ -36,6 +37,7 @@ assemble.layouts('src/views/layouts/**/*.hbs');
 
 assemble.task('docs', function() {
   assemble.src('src/views/docs/**/*.hbs')
+    .pipe(changed('build/docs/', {extension: '.html'}))
     .pipe(rename(function (path) {
       path.extname = ".html"
     }))
@@ -43,6 +45,7 @@ assemble.task('docs', function() {
 });   
 assemble.task('pages', function() {
   assemble.src('src/views/pages/**/*.hbs')
+    .pipe(changed('build/', {extension: '.html'}))
     .pipe(rename(function (path) {
       path.extname = ".html"
     }))
@@ -80,6 +83,7 @@ gulp.task('iconfont', function(){
 // Generate css from scss
 gulp.task('css', function() {
   gulp.src('src/assets/scss/main.scss')
+    .pipe(changed('build/assets/css', {extension: '.css'}))
     .pipe(cssGlobbing({
       extensions: ['.css', '.scss'],
       ignoreFolders: ['../styles'],
@@ -112,6 +116,7 @@ gulp.task('js', function() {
   gulp.src('src/assets/js/libs/**/*')
     .pipe(gulp.dest('build/assets/js/libs'))
   gulp.src('src/assets/js/main.js')
+    .pipe(changed('build/assets/js', {extension: '.js'}))
     .pipe(browserify({ debug : true }))
     .on('error', function (err) {
       gutil.log(gutil.colors.red('ERROR: ')+gutil.colors.yellow(err.message));
