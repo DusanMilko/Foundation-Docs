@@ -132,9 +132,9 @@ The grid has between tweaked to a 24 column grid for more versatility and with m
 ---
 ### SCSS
 
-All scss goes into the "src/assets/scss/" 
+All scss goes into "src/assets/scss/" 
 
-All scss goes into the "src/assets/scss/libs"  
+All scss goes into "src/assets/scss/libs"  
 
 The "_global.scss" file contains some utility classes
 
@@ -143,12 +143,19 @@ The "_global.scss" file contains some utility classes
 
 Using Browserify for JS
 
-All js goes into the "src/assets/js/app"
+All js goes into "src/assets/js/app"
 Refrence js in the main.js file located in "src/assets/js/" 
 
-All libraries goes into the "src/assets/js/libs"  
+All libraries goes into "src/assets/js/libs"  
 
 If you do any js templating put that into "src/assets/js/templates/"
+
+---
+### Fonts
+
+Fonts go into "src/assets/fonts/"
+
+The current build comes with Google's Roboto font
 
 ---
 ### Icon Font
