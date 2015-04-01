@@ -82,8 +82,39 @@ side_nav:
     </p>
 
     {{#markdown}}
-      ---build
-      ---src
+      └── src
+          ├── assets
+          │    ├── fonts
+          │    ├── icons
+          │    │   ├── _icon-font.css (icon font template)
+          │    │   └── svgs
+          │    │        └── *.svg
+          │    ├── imgs
+          │    │   └── *.*
+          │    ├── js
+          │    │   ├── libs
+          │    │   ├── app
+          │    │   ├── templates
+          │    │   └── main.js
+          │    └── scss
+          │        ├── libs
+          │        ├── partials
+          │        ├── elements
+          │        ├── main.scss
+          │        └── _*.scss
+          ├── data
+          │   └── *.{json,yml}
+          ├── helpers
+          │   └── *.js
+          └── views
+              ├── docs
+              │   └── *.{hbs,html,php}
+              ├── partials
+              │   └── *.{hbs,html,php}
+              ├── layouts
+              │   └── default.{hbs,html,php}
+              └── pages
+                  └── index.{hbs,html,php}
     {{/markdown}}
   </div>
 </div><!--end section-->

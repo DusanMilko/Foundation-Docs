@@ -41,29 +41,45 @@
     color: $white;
 
     &:hover {
-      border-color: $black;
       color: $white;
-      background: $black;
+      border-color: scale-color($oil, $lightness: -50%);
+      background: scale-color($oil, $lightness: -50%);
+    }
+
+    &.button--to-filled-color {
+      &:hover {
+        color: $white;
+        border-color: $docs-color;
+        background: $docs-color;
+      }
+    }
+  }
+
+  &.button--to-filled-color {
+    &:hover {
+      color: $white;
+      border-color: $docs-color;
+      background: $docs-color;
     }
   }
 }
 
 .button--color {
-  border-color: $crimson;
-  color: $crimson;
+  border-color: $docs-color;
+  color: $docs-color;
 
   &:hover {
-    background: $crimson;
+    background: $docs-color;
     color: $white;
   }
 
   &.button--filled {
-    background: $crimson;
+    background: $docs-color;
     color: $white;
 
     &:hover {
-      border-color: $oil;
-      background: $oil;
+      border-color: scale-color($docs-color, $lightness: -30%);
+      background: scale-color($docs-color, $lightness: -30%);
     }
   }
 }
