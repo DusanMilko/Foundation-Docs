@@ -12,8 +12,23 @@ gulp.task('default', ['watch']);
 
 gulp.task('clean', function(cb) {
   var del = require('del');
-  
+
   del(['build/**/*'], cb);
+});
+
+// ----------------------------------------------------------------
+
+gulp.task('sync', function() {
+  var browserSync = require('browser-sync');
+  var reload      = browserSync.reload;
+
+  browserSync({
+    server: {
+      baseDir: "./build"
+    }
+  });
+
+  gulp.watch("build/**/*").on('change', reload);
 });
 
 // ----------------------------------------------------------------
