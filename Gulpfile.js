@@ -1,21 +1,8 @@
 var gulp = require('gulp');
-var sass = require('gulp-sass');
-var autoprefixer = require('gulp-autoprefixer');
-var minifycss = require('gulp-minify-css');
 var notify = require('gulp-notify');
 var gutil = require('gulp-util');
-var imagemin = require('gulp-imagemin');
-var browserify = require('gulp-browserify');
-var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
-var del = require('del');
-var cssGlobbing = require('gulp-css-globbing');
-var todo = require('gulp-todo');
 var assemble = require('assemble');
-var iconfont = require('gulp-iconfont');
-var consolidate = require('gulp-consolidate');
-var lodash = require('lodash');
-var changed = require('gulp-changed');
 
 var paths = {
   images: 'src/assets/imgs/**/*'
@@ -24,6 +11,8 @@ var paths = {
 gulp.task('default', ['watch']);
 
 gulp.task('clean', function(cb) {
+  var del = require('del');
+  
   del(['build/**/*'], cb);
 });
 
@@ -37,7 +26,6 @@ assemble.layouts('src/views/layouts/**/*.hbs');
 
 assemble.task('docs', function() {
   assemble.src('src/views/docs/**/*.hbs')
-    .pipe(changed('build/docs/', {extension: '.html'}))
     .pipe(rename(function (path) {
       path.extname = ".html"
     }))
@@ -45,7 +33,6 @@ assemble.task('docs', function() {
 });   
 assemble.task('pages', function() {
   assemble.src('src/views/pages/**/*.hbs')
-    .pipe(changed('build/', {extension: '.html'}))
     .pipe(rename(function (path) {
       path.extname = ".html"
     }))
@@ -60,6 +47,10 @@ gulp.task('assemble', function() {
 
 // Generate Icon font form svgs 
 gulp.task('iconfont', function(){
+  var iconfont = require('gulp-iconfont');
+  var consolidate = require('gulp-consolidate');
+  var lodash = require('lodash');
+
   gulp.src(['src/assets/icons/svgs/*.svg'])
     .pipe(iconfont({ fontName: 'custom-icon-font' }))
     .on('codepoints', function(codepoints, options) {
@@ -82,8 +73,12 @@ gulp.task('iconfont', function(){
 
 // Generate css from scss
 gulp.task('css', function() {
+  //var minifycss = require('gulp-minify-css');
+  var sass = require('gulp-sass');
+  var autoprefixer = require('gulp-autoprefixer');
+  var cssGlobbing = require('gulp-css-globbing');
+
   gulp.src('src/assets/scss/main.scss')
-    .pipe(changed('build/assets/css', {extension: '.css'}))
     .pipe(cssGlobbing({
       extensions: ['.css', '.scss'],
       ignoreFolders: ['../styles'],
@@ -113,10 +108,11 @@ gulp.task('css', function() {
 
 // Generate JS with browserify with sourcemaps
 gulp.task('js', function() {
+  var browserify = require('gulp-browserify');
+
   gulp.src('src/assets/js/libs/**/*')
     .pipe(gulp.dest('build/assets/js/libs'))
   gulp.src('src/assets/js/main.js')
-    .pipe(changed('build/assets/js', {extension: '.js'}))
     .pipe(browserify({ debug : true }))
     .on('error', function (err) {
       gutil.log(gutil.colors.red('ERROR: ')+gutil.colors.yellow(err.message));
@@ -128,6 +124,8 @@ gulp.task('js', function() {
 
 // Compress js
 gulp.task('compressjs', function() {
+  var uglify = require('gulp-uglify');
+
   gulp.src('build/assets/js/main.js')
     .pipe(uglify())
     .pipe(rename('min.js'))
@@ -139,6 +137,8 @@ gulp.task('compressjs', function() {
 
 // Copy all static images
 gulp.task('images', function() {
+  var imagemin = require('gulp-imagemin');
+
   return gulp.src(paths.images)
     .pipe(imagemin({optimizationLevel: 7}))
     .pipe(gulp.dest('build/assets/imgs'));
@@ -154,6 +154,8 @@ gulp.task('fonts', function() {
 
 // generate a todo.md from your javascript files 
 gulp.task('todo', function() {
+  var todo = require('gulp-todo');
+
   gulp.src('src/assets/js/**/*.js')
     .pipe(todo({ fileName: 'todo-js.md'}))
     .pipe(gulp.dest('./todo'));
