@@ -13,9 +13,15 @@ module.exports = function() {
         $target = $(this.hash),
         offset = ($this.data('offset')) ? $this.data('offset') : 0;
 
+    if(this.hash == "#top"){
+      scrollAmount = 0;
+    } else {
+      scrollAmount = $target.offset().top - offset
+    }
+
     if( $target.length ){
       $('html,body').animate({
-          scrollTop: $target.offset().top - offset
+          scrollTop: scrollAmount
         }, 700, 'swing');
     }
 
