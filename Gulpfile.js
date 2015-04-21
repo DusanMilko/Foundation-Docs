@@ -54,6 +54,11 @@ assemble.task('pages', function() {
     .pipe(assemble.dest('build/'));
 });
 gulp.task('assemble', function() {
+  assemble.data(['src/data/**/*.{json,yml}']);
+  assemble.helpers('src/helpers/**/*.js');
+  assemble.partials('src/views/partials/**/*.hbs');
+  assemble.layouts('src/views/layouts/**/*.hbs');
+
   assemble.run('docs');
   assemble.run('pages');
 });
