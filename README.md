@@ -1,7 +1,7 @@
 # Foundation-Docs
 Documentation using Foundation, Gulp and Assemble
 
-All the files you edit go into **src** and get compiles into **build**
+All the files you edit go into **src** and compiles into **build**
 
 ---
 ## Setup
