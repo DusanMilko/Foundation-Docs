@@ -27,5 +27,7 @@
 @import 'global';
 
 //Other
-@import 'elements/*.scss'
-@import 'partials/*.scss'
+@import 'components/*.scss'
+@import 'layout/*.scss'
+@import 'pages/*.scss'
+@import 'theme/*.scss'
