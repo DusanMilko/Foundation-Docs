@@ -131,7 +131,9 @@ gulp.task('js', function() {
   var browserify = require('gulp-browserify');
 
   gulp.src('src/assets/js/libs/**/*')
-    .pipe(gulp.dest('build/assets/js/libs'))
+    .pipe(gulp.dest('build/assets/js/libs'));
+  gulp.src('src/assets/js/data/**/*')
+    .pipe(gulp.dest('build/assets/js/data'));
   gulp.src('src/assets/js/main.js')
     .pipe(browserify({ debug : true }))
     .on('error', function (err) {
@@ -157,10 +159,13 @@ gulp.task('compressjs', function() {
 
 // Copy all static images
 gulp.task('images', function() {
-  var imagemin = require('gulp-imagemin');
+  /*var imagemin = require('gulp-imagemin');
 
   return gulp.src(paths.images)
     .pipe(imagemin({optimizationLevel: 7}))
+    .pipe(gulp.dest('build/assets/imgs'));
+  */
+  return gulp.src('src/assets/imgs/**/*')
     .pipe(gulp.dest('build/assets/imgs'));
 });
 
@@ -203,4 +208,5 @@ gulp.task('watch', function() {
   gulp.watch('src/views/**/*.hbs', ['assemble']);
   gulp.watch('src/assets/scss/**/*.scss', ['css']);
   gulp.watch('src/assets/js/**/*.js', ['js']);
+  gulp.watch('src/assets/imgs/**/*.{jpg,png}', ['images']);
 });
