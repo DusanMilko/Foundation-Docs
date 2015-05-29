@@ -336,6 +336,7 @@ pre {
   //TODO: look into last column element floating right
   //float: left!important;
   border-top: 5px solid $white;
+  margin: 0 auto;
 
   @media #{$xxlarge-up}{
     margin: 0 auto;
