@@ -2,133 +2,44 @@
 layout: docs
 title: Docs
 side_nav:
-  - Objective
-  - Methodology
-  - Tools
-  - Structure
-  - Setup
+  - Pages
 ---
 
-<div id="objective" class="docs__item">
+<div id="pages" class="docs__item">
   {{#parseJSON '{
-    "title": "Objective",
-    "desc": ""
+    "title": "Pages",
+    "desc": "List of project pages"
   }'}}
   {{> docs-desc }}
   {{/parseJSON}}
-  <div class="docs__item-view xsmall-24 xlarge-16 column">
-    <p>
-      The objective is to..
-    </p>
-  </div>
-</div><!--end section-->
-
-<div id="methodology" class="docs__item">
-  {{#parseJSON '{
-    "title": "Methodology",
-    "desc": ""
-  }'}}
-  {{> docs-desc }}
-  {{/parseJSON}}
-  <div class="docs__item-view xsmall-24 xlarge-16 column">
-    <p>
-      The website is built in an atomic structure.
-      </br>
+  <div class="docs__item-view xsmall-24">
+    <div class="xsmall-24 small-12 column">
+      <h4>Project</h4>
       <ul>
         <li>
-          Styles - These are the basic visual elements, modifiers and grid
+          <a href="/">Homepage</a>
+        </li>
+      </ul>
+    </div>
+    <div class="xsmall-24 small-12 column">
+      <h4>Docs</h4>
+      <ul>
+        <li>
+          <a href="/docs/overview.html">Overview</a>
         </li>
         <li>
-          Elements - These are small singular pieces that build up molecules
+          <a href="/docs/styles.html">Styles</a>
         </li>
         <li>
-          Modules - These are standalone pieces that are modules/sections of the project
+          <a href="/docs/elements.html">Elements</a>
         </li>
         <li>
-          Components - These are functional pieces of the project
+          <a href="/docs/modules.html">Modules</a>
         </li>
         <li>
-          Forms - Form Elements
+          <a href="/docs/components.html">Components</a>
         </li>
-      </ul> 
-    </p>
-  </div>
-</div><!--end section-->
-
-<div id="tools" class="docs__item">
-  {{#parseJSON '{
-    "title": "Tools",
-    "desc": ""
-  }'}}
-  {{> docs-desc }}
-  {{/parseJSON}}
-  <div class="docs__item-view xsmall-24 xlarge-16 column">
-    <p>
-      The tools used are...
-    </p>
-  </div>
-</div><!--end section-->
-
-<div id="structure" class="docs__item">
-  {{#parseJSON '{
-    "title": "Structure",
-    "desc": ""
-  }'}}
-  {{> docs-desc }}
-  {{/parseJSON}}
-  <div class="docs__item-view xsmall-24 xlarge-16 column">
-    <p>
-      The structure...
-    </p>
-
-    {{#markdown}}
-      └── src
-          ├── assets
-          │    ├── fonts
-          │    ├── icons
-          │    │   ├── _icon-font.css (icon font template)
-          │    │   └── svgs
-          │    │        └── *.svg
-          │    ├── imgs
-          │    │   └── *.*
-          │    ├── js
-          │    │   ├── libs
-          │    │   ├── app
-          │    │   ├── templates
-          │    │   └── main.js
-          │    └── scss
-          │        ├── libs
-          │        ├── partials
-          │        ├── elements
-          │        ├── main.scss
-          │        └── _*.scss
-          ├── data
-          │   └── *.{json,yml}
-          ├── helpers
-          │   └── *.js
-          └── views
-              ├── docs
-              │   └── *.{hbs,html,php}
-              ├── partials
-              │   └── *.{hbs,html,php}
-              ├── layouts
-              │   └── default.{hbs,html,php}
-              └── pages
-                  └── index.{hbs,html,php}
-    {{/markdown}}
-  </div>
-</div><!--end section-->
-
-<div id="setup" class="docs__item">
-  {{#parseJSON '{
-    "title": "Setup",
-    "desc": ""
-  }'}}
-  {{> docs-desc }}
-  {{/parseJSON}}
-  <div class="docs__item-view xsmall-24 xlarge-16 column">
-    <p>
-      To setup...
-    </p>
+      </ul>
+    </div>
   </div>
 </div><!--end section-->

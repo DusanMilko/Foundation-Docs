@@ -297,24 +297,30 @@ pre {
 }
 
 .docs__item-desc {
-  background: $vapor;
-  padding-top: 45px;
-  padding-bottom: 45px;
+  background: $silver;
+  padding-top: 40px;
+  padding-bottom: 30px;
   border-top: 5px solid $white;
+  border-bottom: 1px solid $gainsboro;
+  padding-left: 20px;
+  padding-right: 20px;
 
   @media #{$small-up}{
     padding-left: 30px;
     padding-right: 30px;
   }
   @media #{$xlarge-up}{
-    padding-bottom: 940px;
-    margin-bottom: -900px;
     padding-left: 20px;
     padding-right: 20px;
   }
   @media #{$xxlarge-up}{
     padding-left: 40px;
     padding-right: 40px;
+
+    h4, p {
+      max-width: 1050px;
+      margin: 0 auto;
+    }
   }
 
   h4 {
@@ -325,12 +331,15 @@ pre {
 }
 
 .docs__item-view {
-  padding-top: 45px;
-  padding-bottom: 45px;
-  max-width: 1000px;
+  padding: 20px 20px 45px;
+  max-width: 1100px;
   //TODO: look into last column element floating right
-  float: left!important;
+  //float: left!important;
   border-top: 5px solid $white;
+
+  @media #{$xxlarge-up}{
+    margin: 0 auto;
+  }
 
   h4.docs-heading {
     color: $base;
