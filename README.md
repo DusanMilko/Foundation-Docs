@@ -120,6 +120,10 @@ with custom json
 {{> nav }}
 {{/parseJSON}}
 
+{{#parseJSON '{"name": "John", "age": "1"}'}}
+    {{> partial title="TITLE" desc=../site.desc person=this}}
+{{/parseJSON}}
+
 ```
 
 ---
