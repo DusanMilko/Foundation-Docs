@@ -159,13 +159,11 @@ gulp.task('compressjs', function() {
 
 // Copy all static images
 gulp.task('images', function() {
-  /*var imagemin = require('gulp-imagemin');
+  var imagemin = require('gulp-imagemin');
+  var cache = require('gulp-cache');
 
   return gulp.src(paths.images)
-    .pipe(imagemin({optimizationLevel: 7}))
-    .pipe(gulp.dest('build/assets/imgs'));
-  */
-  return gulp.src('src/assets/imgs/**/*')
+    .pipe(cache(imagemin({optimizationLevel: 7})))
     .pipe(gulp.dest('build/assets/imgs'));
 });
 
