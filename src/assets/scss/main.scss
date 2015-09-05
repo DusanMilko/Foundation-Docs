@@ -23,12 +23,15 @@
 //Type Styles
 @import 'typography';
 
+//Sprites
+@import 'sprite.scss';
+
 //Global Styles
 @import 'global';
 
 //Other
-@import 'elements/*.scss'
-@import 'modules/*.scss'
-@import 'layout/*.scss'
-@import 'pages/*.scss'
-@import 'theme/*.scss'
+@import 'elements/*.scss';
+@import 'modules/*.scss';
+@import 'layout/*.scss';
+@import 'pages/*.scss';
+@import 'theme/*.scss';
