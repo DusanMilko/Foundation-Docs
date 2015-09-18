@@ -12,7 +12,7 @@ require(
     scrollTo,
     hamburger,
     docs_side_nav
-  ) {
+  ){
   'use strict';
   
     
