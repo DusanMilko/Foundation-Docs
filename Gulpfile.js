@@ -150,13 +150,26 @@ gulp.task('css', function() {
 
 // Generate JS with browserify with sourcemaps
 gulp.task('js', function() {
-  var browserify = require('gulp-browserify');
+  //var browserify = require('gulp-browserify');
+  var rjs = require('gulp-requirejs');
 
   gulp.src('src/assets/js/libs/**/*')
     .pipe(gulp.dest('build/assets/js/libs'));
   gulp.src('src/assets/js/data/**/*')
     .pipe(gulp.dest('build/assets/js/data'));
   gulp.src('src/assets/js/main.js')
+    .pipe(rjs({
+        baseUrl: "src/assets/js",
+        mainConfigFile: "src/assets/js/require-config.js",
+        include: ['libs/require']
+    })
+    .on('error', function (err) {
+      gutil.log(gutil.colors.red('ERROR: ')+gutil.colors.yellow(err.message));
+      this.emit('end');
+    })
+    .pipe(gulp.dest('build/assets/js'))
+    .pipe(notify({ message : 'Gulp JS Complete'}));
+  /*gulp.src('src/assets/js/main.js')
     .pipe(browserify({ debug : true }))
     .on('error', function (err) {
       gutil.log(gutil.colors.red('ERROR: ')+gutil.colors.yellow(err.message));
@@ -164,6 +177,7 @@ gulp.task('js', function() {
     })
     .pipe(gulp.dest('build/assets/js'))
     .pipe(notify({ message : 'Gulp JS Complete'}));
+  */
 });
 
 // Compress js

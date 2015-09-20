@@ -1,6 +1,10 @@
-var $ = require('jquery');
-
-module.exports = function() {
+require(
+  [
+    'jquery'
+  ],
+  function(
+    $
+  ){
   // Click to scroll the a[href] value, value will go to the id of that value
   // Ex:
   // <a class="js-scroll-to" href="#hello">Scroll me to hello</a>
@@ -27,4 +31,4 @@ module.exports = function() {
 
     return false;
   });
-}
+});

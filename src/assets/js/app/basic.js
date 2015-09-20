@@ -1,6 +1,10 @@
-var $ = require('jquery');
-
-module.exports = function() {
+require(
+  [
+    'jquery'
+  ],
+  function(
+    $
+  ){
   'use strict';
 
   var pluginName = "pluginName",
@@ -78,4 +82,4 @@ module.exports = function() {
   }
   init();  
 
-}
+});
