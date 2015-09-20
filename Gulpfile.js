@@ -100,7 +100,7 @@ gulp.task('sprites', function () {
     .pipe(sprite({
       name: 'sprite',
       style: '_sprite.scss',
-      cssPath: 'src/assets/scss/',
+      cssPath: 'assets/sprites/',
       processor: 'css',
       prefix: 'sprite'
     }))
