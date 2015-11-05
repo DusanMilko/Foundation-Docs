@@ -91,6 +91,28 @@ gulp.task('iconfont', function(){
 
 // ----------------------------------------------------------------
 
+// Generate Sprites
+gulp.task('sprites', function () {
+  var gulpif = require('gulp-if');
+  var sprite = require('css-sprite').stream;
+
+  return gulp.src('src/assets/sprites/*.png')
+    .pipe(sprite({
+      name: 'sprite',
+      style: '_sprite.scss',
+      cssPath: 'src/assets/scss/',
+      processor: 'css',
+      prefix: 'sprite'
+    }))
+    .pipe(gulpif(
+      '*.png', 
+      gulp.dest('build/assets/sprites/'), 
+      gulp.dest('src/assets/scss/')
+    ));
+});
+
+// ----------------------------------------------------------------
+
 // Generate css from scss
 gulp.task('css', function() {
   //var minifycss = require('gulp-minify-css');
@@ -128,13 +150,26 @@ gulp.task('css', function() {
 
 // Generate JS with browserify with sourcemaps
 gulp.task('js', function() {
-  var browserify = require('gulp-browserify');
+  //var browserify = require('gulp-browserify');
+  var rjs = require('gulp-requirejs');
 
   gulp.src('src/assets/js/libs/**/*')
     .pipe(gulp.dest('build/assets/js/libs'));
   gulp.src('src/assets/js/data/**/*')
     .pipe(gulp.dest('build/assets/js/data'));
   gulp.src('src/assets/js/main.js')
+    .pipe(rjs({
+        baseUrl: "src/assets/js",
+        mainConfigFile: "src/assets/js/require-config.js",
+        include: ['libs/require']
+    })
+    .on('error', function (err) {
+      gutil.log(gutil.colors.red('ERROR: ')+gutil.colors.yellow(err.message));
+      this.emit('end');
+    })
+    .pipe(gulp.dest('build/assets/js'))
+    .pipe(notify({ message : 'Gulp JS Complete'}));
+  /*gulp.src('src/assets/js/main.js')
     .pipe(browserify({ debug : true }))
     .on('error', function (err) {
       gutil.log(gutil.colors.red('ERROR: ')+gutil.colors.yellow(err.message));
@@ -142,6 +177,7 @@ gulp.task('js', function() {
     })
     .pipe(gulp.dest('build/assets/js'))
     .pipe(notify({ message : 'Gulp JS Complete'}));
+  */
 });
 
 // Compress js
@@ -159,13 +195,11 @@ gulp.task('compressjs', function() {
 
 // Copy all static images
 gulp.task('images', function() {
-  /*var imagemin = require('gulp-imagemin');
+  var imagemin = require('gulp-imagemin');
+  var cache = require('gulp-cache');
 
   return gulp.src(paths.images)
-    .pipe(imagemin({optimizationLevel: 7}))
-    .pipe(gulp.dest('build/assets/imgs'));
-  */
-  return gulp.src('src/assets/imgs/**/*')
+    .pipe(cache(imagemin({optimizationLevel: 7})))
     .pipe(gulp.dest('build/assets/imgs'));
 });
 
@@ -196,6 +230,7 @@ gulp.task('todo', function() {
 
 gulp.task('build', ['clean'], function() {
   gulp.run('images');
+  gulp.run('sprites');
   gulp.run('css');
   gulp.run('js');
   gulp.run('fonts');
@@ -208,5 +243,6 @@ gulp.task('watch', function() {
   gulp.watch('src/views/**/*.hbs', ['assemble']);
   gulp.watch('src/assets/scss/**/*.scss', ['css']);
   gulp.watch('src/assets/js/**/*.js', ['js']);
-  gulp.watch('src/assets/imgs/**/*.{jpg,png}', ['images']);
+  gulp.watch('src/assets/imgs/**/*.{jpg,png,gif}', ['images']);
+  gulp.watch('src/assets/sprites/**/*.{jpg,png,gif}', ['sprites','css']);
 });

@@ -44,6 +44,8 @@ Run `npm install` after clone to download gulp and other required modules.
   │    │        └── *.svg
   │    ├── imgs
   │    │   └── *.*
+  │    ├── sprites
+  │    │   └── *.png
   │    ├── js
   │    │   ├── libs
   │    │   ├── app
@@ -53,6 +55,9 @@ Run `npm install` after clone to download gulp and other required modules.
   │        ├── libs
   │        ├── partials
   │        ├── elements
+  │        ├── modules
+  │        ├── pages
+  │        ├── theme
   │        ├── main.scss
   │        └── _*.scss
   ├── data
@@ -118,6 +123,10 @@ with custom json
   "c": "d"
 }'}}
 {{> nav }}
+{{/parseJSON}}
+
+{{#parseJSON '{"name": "John", "age": "1"}'}}
+    {{> partial title="TITLE" desc=../site.desc person=this}}
 {{/parseJSON}}
 
 ```
