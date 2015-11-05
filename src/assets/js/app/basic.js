@@ -1,5 +1,3 @@
-var $ = require('jquery');
-
 module.exports = function() {
   'use strict';
 
@@ -135,7 +133,7 @@ module.exports = function() {
 
   function init(){
     $(elements.el.view)[pluginName]();
-  }
+  };
   init();
 
 }
