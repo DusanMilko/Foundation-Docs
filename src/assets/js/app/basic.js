@@ -35,6 +35,7 @@ module.exports = function() {
     destroy : function() {
       this.removeEventListeners();
       this.$el.remove();
+      delete window.plugins[this.id];
     },
     addEventListeners : function(){
       $(window).on(('resize.'+this.id), $.proxy(this.resize, this));
