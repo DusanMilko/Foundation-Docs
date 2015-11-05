@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/docs/static/css/doc.css" type="text/css">
+    <link rel="stylesheet" href="/assets/css/styles.css" type="text/css">
+    <link rel="stylesheet" href="/docs/static/css/github.css" type="text/css"><!-- CSS to be documented -->
+    <link rel="stylesheet" href="/docs/static/css/screen.css" type="text/css"><!-- Main libraries -->
+    <link rel="stylesheet" href="/docs/static/css/doc-styles.css" type="text/css">
+</head>
+
+<body>
+    <header class="header pbn" role="banner">
+        <div class="backgroundHighlight typeReversed1">
+            <div class="container">
+                <h1 class="h2 mvs" style="color:white !important;">Build Documentation</span></h1>
+            </div>
+        </div>
+
+        <div class="backgroundLowlight typeReversed1">
+            <div class="container">
+                <ul class="docNav listInline">
+                    <!-- Add your pages here -->
+
+                    <li><span><a href="index.html">Welcome</a></span></li>
+
+                    <li><span><a href="base.html">Base CSS</a></span></li>
+
+                    <li><span><a href="container.html">Container</a></span></li>
+
+                    <li><span><a href="content.html">Content</a></span></li>
+
+                    <li><span><a href="layout.html">Layout</a></span></li>
+
+                    <li><span><a href="utilities.html">Utilities</a></span></li>
+                </ul>
+            </div>
+        </div><!-- //header/container -->
+    </header>
+
+    <div class="content">
+        <section>
+            <div class="line">
+                <% if (!@blocks.empty?) then %>
+                    <div class="col cols4">
+                        <div class="componentMenu box boxBasic backgroundBasic">
+                            <div class="boxBody pan">
+                                <ul class="componentList listBorderedHover">
+                                    <% @blocks.each do |block| %>
+    
+                                    <li><a href="#&lt;%= block[:name] %&gt;"><%= block[:title] %></a></li><% end %>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                <% end %>
+
+                <div class="main col cols20 lastCol p-push--20">

@@ -1,20 +1,7 @@
-require(
-  [
-    'jquery',
-    'app/basic',
-    'app/scroll-to',
-    'app/hamburger',
-    'app/docs-side-nav'
-  ],
-  function(
-    $,
-    basic,
-    scrollTo,
-    hamburger,
-    docs_side_nav
-  ){
-  'use strict';
-  
-    
-  
-});
+var basic = require('./app/basic')();
+var scrollTo = require('./app/scroll-to')();
+var hamburger = require('./app/hamburger')();
+
+var docs_side_nav = require('./app/docs-side-nav')();
+
+

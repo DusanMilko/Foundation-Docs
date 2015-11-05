@@ -8,12 +8,18 @@
 
 <!-- Touch Icons - iOS and Android 2.1+ 180x180 pixels in size. --> 
 <link rel="apple-touch-icon-precomposed" href="apple-touch-icon-precomposed.png">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <!-- 196 x 196 size -->
-<link rel="icon" href="path/to/favicon.png">
+<link rel="shortcut icon" href="/assets/img/device-icons/favicon.ico" type="image/x-icon">
 
 <!-- android color and image -->
 <meta name="theme-color" content="#db5945">
 <link rel="icon" sizes="192x192" href="nice-highres.png">
+
+<!-- Preconnect to urls to load its contents quicker -->
+<!-- Also can do 'dns-prefetch' for full url, 'subresource' for resources/js, 'prefetch' for images and cache, 'prerender' for pages. Can do this on load of js manipulation, remember there is a cost to opening these connections so only on priorities. -->
+<!-- <link href='https://fonts.gstatic.com' rel='preconnect' crossorigin> -->
 
 <!-- TODO og tags for FB share -->
 <meta property="og:title" content="TODO"/>
