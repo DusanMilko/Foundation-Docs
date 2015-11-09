@@ -56,6 +56,19 @@ $block-grid-media-queries: true !default;
         padding: 0 ($spacing/2) $spacing;
       }
     }
+
+    &.xsmall-gutter > li {
+      display: block;
+      float: $default-float;
+      height: auto;
+      @if $include-spacing {
+        padding: 0 ($spacing/2) ($spacing/2);
+      }
+    }
+
+    &.collapse > li {
+      padding: 0;
+    }
   }
 
   @if $per-row {
@@ -71,6 +84,14 @@ $block-grid-media-queries: true !default;
       @if $align-block-grid-to-grid {
         @include block-grid-aligned($per-row, $spacing);
       }
+    }
+    &.xsmall-gutter > li {
+      @if $align-block-grid-to-grid {
+        @include block-grid-aligned($per-row, $spacing/2);
+      }
+    }
+    &.collapse > li {
+      padding: 0;
     }
   }
 }

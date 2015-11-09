@@ -1,0 +1,29 @@
+.backgroundHighlight{
+    background: #373737 !important;
+}
+a{
+    color: #a68c30;
+}
+a:visited{
+    color: #a68c30;
+}
+
+a:visited:hover{
+    color: #928761;
+}
+a:hover, a:active{
+    color: #928761;
+}
+
+.p-push--20{
+    padding-top: 20px;
+}
+
+body{
+
+}
+
+p.styleguide{
+    margin: 20px 0;
+}
+

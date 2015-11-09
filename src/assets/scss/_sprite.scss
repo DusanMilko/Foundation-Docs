@@ -1,1 +1,13 @@
-
+.sprite {
+  background-image: url("src/assets/scss/sprite.png");
+}
+.sprite-placeholder {
+  background-position: -0px -0px;
+  width: 9px;
+  height: 9px;
+}
+.sprite-close {
+  background-position: -0px -9px;
+  width: 136px;
+  height: 136px;
+}

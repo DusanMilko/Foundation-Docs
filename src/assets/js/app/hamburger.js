@@ -1,10 +1,7 @@
-require(
-  [
-    'jquery'
-  ],
-  function(
-    $
-  ){
+var $ = require('jquery');
+
+module.exports = function() {
+
   $('.js-hamburger').on( "click", function(e) {
     e.preventDefault;
 
@@ -35,4 +32,4 @@ require(
       $('.js-hamburger-cont').removeClass('is-active');
     }
   });
-});
+}

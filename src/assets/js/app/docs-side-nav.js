@@ -1,10 +1,7 @@
-require(
-  [
-    'jquery'
-  ],
-  function(
-    $
-  ){
+var $ = require('jquery');
+
+module.exports = function() {
+
   $('.js-docs-side-nav').on( "click", function(e) {
     e.preventDefault;
 
@@ -31,4 +28,4 @@ require(
       }
     }
   });
-});
+}
